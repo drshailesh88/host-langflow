@@ -1,0 +1,19 @@
+app = 'host-langflow-5qsptq'
+primary_region = 'bom'
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[http_service]
+  internal_port = 7860
+  force_https = true
+  auto_stop_machines = 'stop'   # stop machine when idle
+  auto_start_machines = true    # start again on traffic
+  min_machines_running = 0      # no always-on machine
+  processes = ['app']
+
+[[vm]]
+  memory = '4gb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 4096
